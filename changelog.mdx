@@ -1,0 +1,147 @@
+---
+title: Changelog
+description: Track the latest updates and improvements to Kang Yan platform.
+---
+
+## Recent Updates
+
+Stay informed about Kang Yan's evolution. You receive new features for better menu management, order processing, and customer experience on your point餐平台.
+
+<Columns cols={3}>
+  <Card title="Key Features" icon="star" href="/introduction">
+    Discover enhanced search and real-time order tracking.
+  </Card>
+  <Card title="Upgrade Guide" icon="settings" href="/quickstart">
+    Follow steps to update your integration.
+  </Card>
+  <Card title="API Reference" icon="code" href="/authentication">
+    Review changes to endpoints.
+  </Card>
+</Columns>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added enhanced search with filters for menu items by category, price, and popularity.
+- Introduced real-time order status notifications via WebSockets.
+
+## Improvements
+
+- Optimized dashboard load times by `>30%` using lazy loading.
+- Enhanced mobile responsiveness for tablet ordering interfaces.
+
+## Bug Fixes
+
+- Fixed order duplication issue during peak hours.
+- Resolved payment gateway timeout errors for Alipay integration.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Integrated push notifications for order confirmations and updates.
+- Added multi-language support for menus (English, Simplified Chinese).
+
+## Bug Fixes
+
+- Corrected cart persistence across sessions.
+- Patched security vulnerability in user session handling.
+
+## Improvements
+
+- Streamlined checkout flow reducing steps from 5 to 3.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core ordering platform with menu builder and POS integration.
+- User authentication via OAuth and API keys.
+
+## Breaking Changes
+
+- Updated API base URL from `/v0` to `/v1`.
+- Deprecated legacy `order/create` endpoint; migrate to `orders/create`.
+
+## Initial Setup
+
+- Basic dashboard for restaurant owners.
+- Customer-facing ordering interface.
+
+</Update>
+
+## Upgrade Process
+
+Follow these steps to upgrade your Kang Yan integration safely.
+
+<Steps>
+  <Step title="Backup Data" icon="database">
+    Export your current orders and menus.
+
+    ```
+    curl -X GET https://api.example.com/v1/export \
+      -H "Authorization: Bearer YOUR_TOKEN"
+    ```
+  </Step>
+  <Step title="Update SDK" icon="download">
+    <Tabs>
+      <Tab title="npm" icon="package">
+````bash
+npm update kang-yan-sdk@latest
+````
+      </Tab>
+      <Tab title="Python" icon="python">
+````bash
+pip install --upgrade kang-yan-sdk
+````
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Test Changes" icon="test-tube">
+    Verify new search endpoint.
+
+    <CodeGroup tabs="JavaScript,Python">
+```javascript
+const response = await fetch('https://api.example.com/v1/search?query=dimsum&category=rice', {
+  headers: { Authorization: `Bearer ${YOUR_TOKEN}` }
+});
+```
+```python
+import requests
+response = requests.get('https://api.example.com/v1/search', 
+                       params={'query': 'dimsum', 'category': 'rice'},
+                       headers={'Authorization': f'Bearer {YOUR_TOKEN}'})
+```
+    </CodeGroup>
+  </Step>
+</Steps>
+
+## Upcoming Changes
+
+<Callout kind="alert">
+  In v1.3.0 (expected November 2024), we deprecate the old payment webhook format. Migrate to the new schema by adding `signature` verification.
+</Callout>
+
+| Version | Date       | Key Changes                  | Migration Required |
+|---------|------------|------------------------------|--------------------|
+| v1.2.0 | 2024-10-15 | Search filters, notifications | No                 |
+| v1.1.0 | 2024-09-20 | Push notifications           | Minor              |
+| v1.0.0 | 2024-08-10 | Initial release              | N/A                |
+
+<Expandable title="Detailed Migration Notes" default-open="false">
+  For breaking changes in v1.0.0, update your client code to use the new `{version}` header.
+
+  ```javascript
+  fetch('/v1/orders', {
+    headers: {
+      'Authorization': `Bearer YOUR_TOKEN`,
+      'Kang-Yan-Version': '1.2.0'
+    }
+  });
+  ```
+</Expandable>

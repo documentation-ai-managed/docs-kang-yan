@@ -1,0 +1,125 @@
+---
+title: Getting Started with Kang Yan
+description: Set up your account and place your first order on Kang Yan in just a few minutes.
+---
+
+## Before You Begin
+
+<Callout kind="info">
+Before starting, ensure you have:
+- A valid email address for account verification
+- Access to `https://dashboard.example.com` (Kang Yan dashboard)
+- A web browser like Chrome or Firefox
+</Callout>
+
+Kang Yan simplifies ordering meals from your favorite restaurants. Follow these steps to create an account, explore the dashboard, and place your first order.
+
+## Create and Verify Your Account
+
+Sign up takes under 2 minutes. Use the registration form at `https://dashboard.example.com/register`.
+
+<Steps>
+  <Step title="Visit Registration Page" icon="external-link">
+    Open your browser and navigate to `https://dashboard.example.com/register`.
+  </Step>
+  <Step title="Fill in Details" icon="user">
+    Enter your name, email, and a strong password. Agree to the terms.
+  </Step>
+  <Step title="Submit and Verify" icon="mail">
+    Click **Register**. Check your email for a verification link from Kang Yan and click it to activate your account.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+If you don't receive the email, check your spam folder or request a resend from the login page.
+</Callout>
+
+## Navigate the Dashboard
+
+Log in at `https://dashboard.example.com/login`. The dashboard provides quick access to menus, past orders, and settings.
+
+<Tabs>
+  <Tab title="Menu Browser" icon="menu">
+    Click **Browse Menus** on the left sidebar. Filter by cuisine, price, or rating. Use search for specific items like "pad thai".
+  </Tab>
+  <Tab title="Order History" icon="history">
+    View **My Orders** to track deliveries. Each order shows status: preparing, out for delivery, or completed.
+  </Tab>
+  <Tab title="Profile" icon="settings">
+    Update your address and payment methods under **Account Settings**.
+  </Tab>
+</Tabs>
+
+## Place Your First Order
+
+Select a restaurant and add items to your cart.
+
+<Steps>
+  <Step title="Choose Restaurant" icon="restaurant">
+    From the menu browser, pick a restaurant like "Spicy Noodles Hub".
+  </Step>
+  <Step title="Add Items" icon="shopping-cart">
+    Click **Add to Cart** on desired dishes. Customize quantities and notes.
+  </Step>
+  <Step title="Checkout" icon="credit-card">
+    Review cart, enter delivery address, select payment (card or wallet), and confirm.
+  </Step>
+  <Step title="Track Order" icon="map-pin">
+    Get a confirmation email and track live status in **My Orders**.
+  </Step>
+</Steps>
+
+For developers, place orders via API:
+
+<CodeGroup tabs="JavaScript,cURL">
+  ```javascript
+  const response = await fetch('https://api.example.com/v1/orders', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer YOUR_TOKEN', 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      restaurantId: 'rest_123',
+      items: [{ id: 'dish_456', quantity: 2 }],
+      deliveryAddress: '123 Main St, City'
+    })
+  });
+  const order = await response.json();
+  console.log(order.id);
+  ```
+  ```bash
+  curl -X POST https://api.example.com/v1/orders \
+    -H "Authorization: Bearer YOUR_TOKEN" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "restaurantId": "rest_123",
+      "items": [{"id": "dish_456", "quantity": 2}],
+      "deliveryAddress": "123 Main St, City"
+    }'
+  ```
+</CodeGroup>
+
+<ParamField path="restaurantId" param-type="string" required="true">
+  Unique restaurant identifier.
+</ParamField>
+
+<ParamField path="items" param-type="array" required="true">
+  Array of item objects with `id` and `quantity`.
+</ParamField>
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Explore Menus" icon="menu" href="/introduction">
+    Dive deeper into restaurant discovery and filters.
+  </Card>
+  <Card title="API Authentication" icon="key" href="/authentication">
+    Secure your API calls with tokens.
+  </Card>
+  <Card title="Advanced Ordering" icon="code" href="#">
+    Learn webhooks for order updates.
+  </Card>
+  <Card title="Support" icon="help-circle" href="/changelog">
+    Check updates and FAQs.
+  </Card>
+</Columns>
+
+You're now ready to order! Your first delivery arrives in `<30` minutes typically. For issues, contact support at support@example.com.

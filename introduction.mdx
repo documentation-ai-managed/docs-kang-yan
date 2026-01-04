@@ -1,0 +1,104 @@
+---
+title: Introduction to Kang Yan
+description: Discover Kang Yan, the efficient point meal ordering platform designed to streamline food ordering for restaurants and customers alike.
+---
+
+## Overview
+
+Kang Yan revolutionizes restaurant operations by providing a seamless point meal ordering platform. You manage orders, customize menus, and serve customers faster with real-time updates and intuitive tools. Designed for efficiency, it reduces wait times and boosts satisfaction for both restaurants and diners.
+
+<Callout kind="info">
+Kang Yan supports unlimited tables and scales effortlessly from small cafes to large chains.
+</Callout>
+
+## Key Features
+
+Explore the core capabilities that make Kang Yan your go-to solution for modern food ordering.
+
+<Columns cols={3}>
+  <Card title="Order Management" icon="package" href="/order-management">
+    Track orders from placement to delivery with automated notifications and status updates.
+  </Card>
+  <Card title="Intuitive User Interface" icon="smartphone" href="/user-interface">
+    Clean, responsive design works on any device, ensuring smooth experiences for staff and customers.
+  </Card>
+  <Card title="Real-time Analytics" icon="bar-chart-3" href="/analytics">
+    Monitor sales trends, popular items, and peak hours to optimize your menu and staffing.
+  </Card>
+</Columns>
+
+## Quick Start
+
+Get up and running in minutes. Follow these steps to launch your first menu.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Create your free account at `https://dashboard.example.com/register`.
+
+    ```bash
+    # No installation required - access via web browser
+    ```
+  </Step>
+  <Step title="Configure Menu" icon="edit-3">
+    Upload items, set prices, and assign categories through the dashboard.
+  </Step>
+  <Step title="Enable Ordering" icon="zap">
+    Generate your QR code for tables and share the ordering link with customers.
+  </Step>
+  <Step title="Integrate API (Optional)" icon="code">
+    Use the Kang Yan API for advanced customizations.
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="Restaurant View" icon="building">
+    Manage backend operations like inventory and staff assignments.
+  </Tab>
+  <Tab title="Customer View" icon="users">
+    Customers scan QR codes to browse menus and place orders instantly.
+  </Tab>
+</Tabs>
+
+## Integrate with Your App
+
+Embed Kang Yan orders using the JavaScript SDK.
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  import { KangYan } from 'kang-yan-sdk';
+
+  const client = new KangYan({ apiKey: 'YOUR_API_KEY' });
+  const orders = await client.orders.list({ tableId: 'table-123' });
+  console.log(orders);
+  ```
+  ```python
+  from kang_yan import KangYan
+
+  client = KangYan(api_key="YOUR_API_KEY")
+  orders = client.orders.list(table_id="table-123")
+  print(orders)
+  ```
+</CodeGroup>
+
+## Next Steps
+
+Dive deeper into Kang Yan.
+
+<Columns cols={2}>
+  <Card title="Quickstart Guide" icon="book-open" href="/quickstart">
+    Detailed setup instructions.
+  </Card>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your API access.
+  </Card>
+  <Card title="API Reference" icon="api" href="/api-reference">
+    Full endpoint documentation.
+  </Card>
+  <Card title="Changelog" icon="git-branch" href="/changelog">
+    Stay updated with releases.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+Ready to order? Head to the [Quickstart](/quickstart) to configure your first table.
+</Callout>
